@@ -2,43 +2,68 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contagem Regressiva 💖</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
         body {
+            height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(to bottom right, #ffe0e9, #ffccd5);
-            color: #6d214f;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 20px 10px;
+            color: #6d214f;
         }
 
         h1 {
-            font-size: 2em;
-            margin-bottom: 25px;
+            font-size: 1.6em;
+            margin-bottom: 10px;
             color: #b33771;
             text-shadow: 1px 1px #fff0f5;
         }
 
         #contador {
-            font-size: 1.8em;
+            font-size: 1.4em;
             background: rgba(255, 255, 255, 0.85);
-            color: #e84393;
-            padding: 20px 30px;
+            color: #823259;
+            padding: 8px 20px;
             border-radius: 20px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            display: inline-block;
             font-weight: bold;
             max-width: 90%;
             word-wrap: break-word;
+            margin-bottom: 10px;
+        }
+
+        .background-img {
+            width: 300px;
+            max-width: 80%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
         .heart {
-            font-size: 3em;
+            font-size: 2.5em;
             animation: pulse 1.5s infinite;
             color: #ff6b81;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
 
         @keyframes pulse {
@@ -55,31 +80,39 @@
             }
         }
 
-        /* Responsivo para telas menores */
-        @media (max-width: 600px) {
+        @media (max-height: 600px) {
+            .background-img {
+                width: 250px;
+            }
+
             h1 {
-                font-size: 1.5em;
+                font-size: 1.3em;
             }
 
             #contador {
-                font-size: 1.3em;
-                padding: 15px 20px;
+                font-size: 1.1em;
+                padding: 6px 16px;
             }
 
             .heart {
-                font-size: 2.2em;
+                font-size: 2em;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="heart">❤️</div>
-    <h1>Contagem Regressiva para o nosso encontro 💞</h1>
-    <div id="contador">Carregando...</div>
+    <div class="container">
+        <div>
+            <h1>Contagem Regressiva para o nosso encontro 💞</h1>
+            <div id="contador">Carregando...</div>
+        </div>
+        <img src="./imgs/nos.png" alt="Casal animado" class="background-img" />
+        <div class="heart">❤️</div>
+    </div>
 
     <script>
-        const dataAlvo = new Date("2025-04-23T23:00:00");
+        const dataAlvo = new Date("2025-04-24T16:40:00");
 
         function atualizarContador() {
             const agora = new Date();
@@ -97,7 +130,7 @@
             const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
             document.getElementById("contador").innerHTML =
-                `${dias} dias, ${horas}h ${minutos}min ${segundos}s 💓`;
+                `${dias} dias, ${horas}h ${minutos}min ${segundos}s`;
         }
 
         const intervalo = setInterval(atualizarContador, 1000);
