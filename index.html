@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva 💖</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #ffe0e9, #ffccd5);
+            color: #6d214f;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #b33771;
+            text-shadow: 1px 1px #fff0f5;
+        }
+
+        #contador {
+            font-size: 1.8em;
+            background: rgba(255, 255, 255, 0.85);
+            color: #e84393;
+            padding: 20px 30px;
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            font-weight: bold;
+            max-width: 90%;
+            word-wrap: break-word;
+        }
+
+        .heart {
+            font-size: 3em;
+            animation: pulse 1.5s infinite;
+            color: #ff6b81;
+            margin-bottom: 15px;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsivo para telas menores */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            #contador {
+                font-size: 1.3em;
+                padding: 15px 20px;
+            }
+
+            .heart {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heart">❤️</div>
+    <h1>Contagem Regressiva para o nosso encontro 💞</h1>
+    <div id="contador">Carregando...</div>
+
+    <script>
+        const dataAlvo = new Date("2025-04-23T23:00:00");
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diferenca = dataAlvo - agora;
+
+            if (diferenca <= 0) {
+                document.getElementById("contador").innerHTML = "Chegou o grande momento! 💘";
+                clearInterval(intervalo);
+                return;
+            }
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            document.getElementById("contador").innerHTML =
+                `${dias} dias, ${horas}h ${minutos}min ${segundos}s 💓`;
+        }
+
+        const intervalo = setInterval(atualizarContador, 1000);
+        atualizarContador();
+    </script>
+</body>
+
+</html>
